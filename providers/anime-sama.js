@@ -18896,9 +18896,8 @@ function print() { __p += __j.call(arguments, '') }
         let O = `${R}-${v}`;
         (M.add(O), T.push(...(yield Li(O, 1, u, r, x, I))));
       }
-      let P = [],
-        $ = T.some((O) => /\(VF\)/i.test((O == null ? void 0 : O.name) || ""));
-      if ((T.length === 0 || !$) && !Xt(g) && !ee(b, je)) {
+      let P = [];
+      if (T.length === 0 && !Xt(g) && !ee(b, je)) {
         for (let O of G) {
           let ut = yield RC(O);
           for (let lt of ut)
