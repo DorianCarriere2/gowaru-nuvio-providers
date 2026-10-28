@@ -18560,8 +18560,8 @@ function print() { __p += __j.call(arguments, '') }
     return t.map((a) => (a.match(u) || [])[1]).filter(Boolean);
   }
   function D2(t, r, i) {
-    let u = ["vf", "vf1", "vf2", "vostfr"];
-    if (!t) return ["vostfr", "vf"];
+    let u = ["vf", "vf1", "vf2", "vostfr", "va", "vj", "var", "vkr", "vcn", "vqc"];
+    if (!t) return u;
     let a =
         i === "movie"
           ? /^film\d*\//
@@ -18841,6 +18841,23 @@ function print() { __p += __j.call(arguments, '') }
     return V(this, null, function* () {
       let { title: l, paths: p } = yield hc(t);
       if (!l) return [];
+      if (u !== "movie") {
+        let h = (p || []).find((_) => new RegExp(`^saison${r}(?:-\\d+)?/`, "i").test(_));
+        if (h)
+          try {
+            let _ = yield Bu(`${Bi}/catalogue/${t}/${h}/`),
+              v = _.match(/languesDispo\s*=\s*\[([^\]]*)\]/i);
+            if (v) {
+              let b = v[1].match(/["']([a-z0-9]+)["']/gi) || [];
+              p = p || [];
+              for (let w of b) {
+                let x = w.slice(1, -1).toLowerCase(),
+                  C = `saison${r}/${x}`;
+                p.includes(C) || p.push(C);
+              }
+            }
+          } catch (_) {}
+      }
       let h = [];
       for (let g of D2(p, r, u)) {
         if (h.length >= c) break;
@@ -18864,7 +18881,7 @@ function print() { __p += __j.call(arguments, '') }
         C = _[0],
         R = oc(C),
         T = [],
-        I = 3,
+        I = 8,
         G = _.slice(0, BC).map((O) => _s(O));
       if (r === "movie")
         for (let O of [...G]) {
