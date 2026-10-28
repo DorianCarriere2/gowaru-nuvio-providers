@@ -18740,7 +18740,7 @@ function print() { __p += __j.call(arguments, '') }
         p = 12e3,
         h = t.slice().sort((g, _) => w2(g.urls[u] || "") - w2(_.urls[u] || ""));
       for (let { varName: g, urls: _ } of h) {
-        if (c.length >= 2 || Date.now() - l > p) break;
+        if (Date.now() - l > p) break;
         let v = _[u];
         if (!v || !v.startsWith("http") || $C.test(v)) continue;
         let b = i ? `Ep ${i} - ` : "";
@@ -18881,7 +18881,7 @@ function print() { __p += __j.call(arguments, '') }
         C = _[0],
         R = oc(C),
         T = [],
-        I = 8,
+        I = 24,
         G = _.slice(0, BC).map((O) => _s(O));
       if (r === "movie")
         for (let O of [...G]) {
