@@ -18506,15 +18506,24 @@ function print() { __p += __j.call(arguments, '') }
     }
     return i;
   }
-  function kC(t) {
-    let r = [],
-      i = /panneauAnime\(\s*["']([^"']*)["']\s*,\s*["']([^"']+)["']\s*\)/g,
-      u;
-    for (; (u = i.exec(t)) !== null;) {
-      let a = u[2].replace(/^\/+|\/+$/g, "");
-      !/\//.test(a) || a === "url" || r.includes(a) || r.push(a);
+  function kC(t, r) {
+    let i = [],
+      u = /panneauAnime\(\s*["']([^"']*)["']\s*,\s*["']([^"']+)["']\s*\)/g,
+      a;
+    for (; (a = u.exec(t)) !== null;) {
+      let c = a[2].replace(/^\/+|\/+$/g, "");
+      !/\//.test(c) || c === "url" || i.includes(c) || i.push(c);
     }
-    return r;
+    if (r) {
+      let c = r.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+        l = new RegExp(`href=["']https?://anime-sama\\.to/catalogue/${c}/([^"'?#]+)|href=["']/catalogue/${c}/([^"'?#]+)`, "gi"),
+        p;
+      for (; (p = l.exec(t)) !== null;) {
+        let h = (p[1] || p[2] || "").replace(/^\/+|\/+$/g, "");
+        !/\//.test(h) || i.includes(h) || i.push(h);
+      }
+    }
+    return i;
   }
   function hc(t) {
     return V(this, null, function* () {
@@ -18535,7 +18544,7 @@ function print() { __p += __j.call(arguments, '') }
             l = a("title").first().text().trim();
           i.title = c || (l ? l.split("|")[0].trim() : null);
         } catch (a) {}
-        let u = kC(r);
+        let u = kC(r, t);
         i.paths = u.length > 0 ? u : null;
       }
       return (vs.set(t, i), i);
@@ -18551,7 +18560,7 @@ function print() { __p += __j.call(arguments, '') }
     return t.map((a) => (a.match(u) || [])[1]).filter(Boolean);
   }
   function D2(t, r, i) {
-    let u = ["vostfr", "vf", "vf1", "vf2"];
+    let u = ["vf", "vf1", "vf2", "vostfr"];
     if (!t) return ["vostfr", "vf"];
     let a =
         i === "movie"
@@ -18887,8 +18896,9 @@ function print() { __p += __j.call(arguments, '') }
         let O = `${R}-${v}`;
         (M.add(O), T.push(...(yield Li(O, v, u, r, x, I))));
       }
-      let P = [];
-      if (T.length === 0 && !Xt(g) && !ee(b, je)) {
+      let P = [],
+        $ = T.some((O) => /\(VF\)/i.test((O == null ? void 0 : O.name) || ""));
+      if ((T.length === 0 || !$) && !Xt(g) && !ee(b, je)) {
         for (let O of G) {
           let ut = yield RC(O);
           for (let lt of ut)
