@@ -18894,7 +18894,7 @@ function print() { __p += __j.call(arguments, '') }
       }
       if (T.length === 0 && v > 1 && !Xt(g) && !ee(b, je)) {
         let O = `${R}-${v}`;
-        (M.add(O), T.push(...(yield Li(O, v, u, r, x, I))));
+        (M.add(O), T.push(...(yield Li(O, 1, u, r, x, I))));
       }
       let P = [],
         $ = T.some((O) => /\(VF\)/i.test((O == null ? void 0 : O.name) || ""));
