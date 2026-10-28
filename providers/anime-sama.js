@@ -2128,7 +2128,7 @@ var __provider = (() => {
         { name: "streamtape", domain: "streamtape.com" },
         { name: "sibnet", domain: "sibnet.ru" },
         { name: "vidmoly", domain: "vidmoly.to" },
-        { name: "uqload", domain: "uqload.co" },
+        { name: "uqload", domain: "uqload.vc" },
         { name: "voe", domain: "voe.sx" },
         { name: "dood", domain: "dood.to" },
         { name: "younetu", domain: "younetu.org" },
