@@ -18747,7 +18747,7 @@ function print() { __p += __j.call(arguments, '') }
         try {
           let w = yield fn(
             qu({
-              name: `Anime-Sama (${r.toUpperCase()})`,
+              name: `Anime-Sama (${r.toUpperCase()}) — ${b2(g, v)}`,
               title: `${b2(g, v)} - ${b}${r.toUpperCase()}`,
               url: v,
               quality: "HD",
